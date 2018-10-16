@@ -59,6 +59,10 @@ Figure 2 - Actual well water values (blue) v.s. forecasted well water values (or
 
 CONCLUSION
 
-	Our ARIMA(5,1,5) model with a mean absolute percent error (MAPE) of 0.068 was used to forecast the results during the second week of June 2018. The data showed several local maximums and minimums in well-depth (such as the rise in well depth around June 8th in Figure 2 above) that our model could not account for. This could possibly be due to an increase in rainfall on June 8th, leading to increased well water levels. In the future, incorporating related data such as rainfall or tide levels into our model could help model some of these nuances.
+Our ARIMA(5,1,5) model with a mean absolute percent error (MAPE) of 0.068 was used to forecast the results during the second 
+week of June 2018. The data showed several local maximums and minimums in well-depth (such as the rise in well depth around 
+June 8th in Figure 2 above) that our model could not account for. This could possibly be due to an increase in rainfall on 
+June 8th, leading to increased well water levels. In the future, incorporating related data such as rainfall or tide levels
+into our model could help model some of these nuances.
 
 
