@@ -28,11 +28,20 @@ Next, we conducted a standard Dickey-Fuller Test to check for stationarity in th
 
 ### Modeling Autocorrelation
 
-We checked our autocorrelation function plots and found both autoregressive (AR) and moving averages (MA) terms to be present, due to exponentially decreasing autocorrelation in both the ACF and PACF plots. Our analysis found that five AR and five MA terms were needed to account for this correlation structure. After fitting these terms, autocorrelation in our model was accounted for, and any remaining autocorrelation present was acceptable, as it was within the bounds of a 95% confidence interval. (See Figures 3 & 4 in the Appendix for further details).
+We checked our autocorrelation function plots and found both autoregressive (AR) and moving averages (MA) terms to be present, due to exponentially decreasing autocorrelation in both the ACF and PACF plots. Our analysis found that five AR and five MA terms were needed to account for this correlation structure. After fitting these terms, autocorrelation in our model was accounted for, and any remaining autocorrelation present was acceptable, as it was within the bounds of a 95% confidence interval. 
+
+![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/ACF.png "ACF")
+*Figure 2 - ACF*
+
+![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/PACF.png "PACF")
+*Figure 3 - PACF*
 
 ### White Noise
 
-Finally, after accounting for seasonality, non-stationarity, and autocorrelation, we checked to make sure we were only left with white noise in our error terms. To test this, we conducted a Ljung Box Test and failed to reject the null hypothesis, meaning that we had indeed accounted for all non-error effects in our model and were left with white noise. These high p-values were reflected in our Ljung Box White Noise Test plot. (See Figure 5 in the Appendix for further details).
+Finally, after accounting for seasonality, non-stationarity, and autocorrelation, we checked to make sure we were only left with white noise in our error terms. To test this, we conducted a Ljung Box Test and failed to reject the null hypothesis, meaning that we had indeed accounted for all non-error effects in our model and were left with white noise. These high p-values were reflected in our Ljung Box White Noise Test plot. 
+
+![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/white_noise.png "White Noise")
+*Figure 4 - Ljung Box White Noise Test plot*
 
 ### Final Model
 
@@ -48,9 +57,10 @@ The second week of June (June 6, 2018 through June 12, 2018) was used as a holdo
 
 *Table 1 - Model Diagnostic Statistics*
 
-Overall, our model (shown in orange) effectively predicts the actual well-depth values (shown in blue) within a 95% confidence interval, indicated by the red lines in Figure 2 below. While our model over-predicts values for most of the values throughout June 7th and moves to underpredicting values from June 8th to June 12th, it generally hovers around the mean to where the actual values reside.
+Overall, our model (shown in orange) effectively predicts the actual well-depth values (shown in blue) within a 95% confidence interval, indicated by the red lines in Figure 5 below. While our model over-predicts values for most of the values throughout June 7th and moves to underpredicting values from June 8th to June 12th, it generally hovers around the mean to where the actual values reside.
 
-Figure 2 - Actual well water values (blue) v.s. forecasted well water values (orange) for the holdout data set
+![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/Actual_vs_predict.png "White Noise")
+*Figure 5 - Actual well water values (blue) v.s. forecasted well water values (orange) for the holdout data set*
 
 ## CONCLUSION
 
