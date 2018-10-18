@@ -18,6 +18,7 @@ The original data included values for date, time, timezone, well measurement in 
 
 First, we identified if any seasonality was present in our data. While we originally found yearly seasonality to be present based on a Seasonal Trend Loess (STL) decomposition, it was on a very small scale. The addition of a seasonal component using a Fourier series did not significantly reduce the amount of variability captured by our error component, illustrated in the decomposition plot (Figure 1) below. We also checked for daily and weekly seasonality and found none to be present. Since accounting for the long-term seasonality did not add much value to modeling our series, we decided not to include a seasonality component in our analysis. 
 
+![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
 
 Figure 1 - STL decomposition plot
 
