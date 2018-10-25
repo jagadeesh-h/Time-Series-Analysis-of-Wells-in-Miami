@@ -54,10 +54,10 @@ The final result of the analysis was an ARIMA(8, 1, 8) model with 72 (hourly) la
 
 The ARIMA(8, 1, 8) model was used to forecast one week’s worth of well levels for the second week of June (June 6, 2018 through June 12, 2018). The model accurately forecasted ninety-five percent of the values in the validation dataset using the mean absolute percent error (MAPE) as the diagnostic statistic. See Table 1 for the diagnostic statistics results of the validation test.
 
-|    Model              |   MAE |  MAPE | sMAPE |    AIC   | 
-| --------------------- | ------| ------|------ |----------|
-|ARIMA(8,1,8) with lags | 0.139 | 0.068 | 0.038 | -157729.9|
-|of 72 hours            |       |       |       |          |
+|    Model                            |   MAE |  MAPE | sMAPE |    AIC   | 
+| ----------------------------------- | ------| ------|------ |----------|
+|ARIMA(8,1,8) with lags of 72 hours   | 0.139 | 0.068 | 0.038 | -157729.9|
+
 
 *Table 1 - Model Diagnostic Statistics*
 
