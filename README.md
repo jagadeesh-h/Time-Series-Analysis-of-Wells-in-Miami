@@ -23,7 +23,7 @@ From the analysis, the tide variable was determined to be insignificant in predi
  
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
 
-##### *Figure 1 - STL decomposition plot
+##### *Figure 1 - STL decomposition plot*
 
 ### Stationarity in the Mean
 
@@ -36,8 +36,10 @@ We checked our autocorrelation function plots and found both autoregressive (AR)
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/ACF.png "ACF")
 ##### *Figure 2 - ACF*
 
+
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/PACF.png "PACF")
 ##### *Figure 3 - PACF*
+
 
 ### White Noise
 
