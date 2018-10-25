@@ -23,7 +23,7 @@ From the analysis, the tide variable was determined to be insignificant in predi
 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
 <p align="center">
-  ##### *Figure 1 - STL decomposition plot*
+  <b> Figure 1 - STL decomposition plot </b>
 </p>
 
 ### Stationarity in the Mean
