@@ -23,7 +23,7 @@ From the analysis, the tide variable was determined to be insignificant in predi
  
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
 
-Figure 1 - STL decomposition plot
+##### *Figure 1 - STL decomposition plot
 
 ### Stationarity in the Mean
 
@@ -34,17 +34,17 @@ Next, we conducted a standard Dickey-Fuller Test to check for stationarity in th
 We checked our autocorrelation function plots and found both autoregressive (AR) and moving averages (MA) terms to be present, due to exponentially decreasing autocorrelation in both the ACF and PACF plots. Our analysis found that eight AR and eight MA terms were needed to account for this correlation structure. After fitting these terms, autocorrelation in our model was accounted for, and any remaining autocorrelation present was acceptable, as it was within the bounds of a 95% confidence interval. 
 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/ACF.png "ACF")
-*Figure 2 - ACF*
+##### *Figure 2 - ACF*
 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/PACF.png "PACF")
-*Figure 3 - PACF*
+##### *Figure 3 - PACF*
 
 ### White Noise
 
 Finally, after accounting for seasonality, non-stationarity, and autocorrelation, we checked to make sure we were only left with white noise in our error terms. To test this, we conducted a Ljung Box Test and failed to reject the null hypothesis, meaning that we had indeed accounted for all non-error effects in our model and were left with white noise. These high p-values were reflected in our Ljung Box White Noise Test plot. 
 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/white_noise.png "White Noise")
-*Figure 4 - Ljung Box White Noise Test plot*
+##### *Figure 4 - Ljung Box White Noise Test plot*
 
 ### Final Model
 
@@ -59,12 +59,12 @@ The ARIMA(8, 1, 8) model was used to forecast one week’s worth of well levels 
 |ARIMA(8,1,8) with lags of 72 hours   | 0.139 | 0.068 | 0.038 | -157729.9|
 
 
-*Table 1 - Model Diagnostic Statistics*
+##### *Table 1 - Model Diagnostic Statistics*
 
 Overall, our model (shown in orange) effectively predicts the actual well-depth values (shown in blue) within a 95% confidence interval, indicated by the red lines in Figure 5 below. 
 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/Actual_vs_predict.png "Actual VS Prediction")
-*Figure 5 - Actual well water values (blue) v.s. forecasted well water values (orange) for the holdout data set*
+##### *Figure 5 - Actual well water values (blue) v.s. forecasted well water values (orange) for the holdout data set*
 
 ## CONCLUSION
 
