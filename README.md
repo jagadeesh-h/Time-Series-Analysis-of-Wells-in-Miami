@@ -2,22 +2,25 @@
 
 ## SUMMARY
 
-We performed a time series analysis of the G-561 well data provided by the National Science Foundation and U.S Department of Agriculture’s program on Water Sustainability and Climate (WSC) located in Miami. The analysis showed no seasonal effects in the model. Clear evidence of correlations and random walk were found in the model and removed. An ARIMA (5, 1, 5) model yielded the best predictions. This model had a mean absolute percent error (MAPE) of 0.068 and was used to forecast the results during the second week of June 2018.
+This report discusses time series analysis of data provided by the National Science Foundation and U.S Department of Agriculture’s program on Water Sustainability and Climate (WSC). Specifically, this analysis focused on Well G-561, located in Miami. The analysis considered a subset of the data from June 2015 to June 2018 to obtain a more accurate forecast. The result of the analysis was an ARIMA(8, 1, 8) model with 72 (hourly) lags of the rain variable for Well G-561. This model accurately forecasted ninety-five percent of the values during the second week of June 2018, with a mean absolute percent error (MAPE) value of 0.053. 
+
 
 ## BACKGROUND
 
-The analysis performed in this report is part of a project for consulting the National Science Foundation and U.S Department of Agriculture’s program on Water Sustainability and Climate (WSC)  for the well G-561 near Miami, Florida. The dataset contained ten years of information for Well G-561 and included corrected water levels. The goal of the project was to illustrate and predict the water levels of well G-561 by fitting time series models to our data. 
+The analysis performed in this report is part of a larger consulting project for the National Science Foundation and U.S Department of Agriculture’s program on Water Sustainability and Climate (WSC). One of the wells studied in the WSC is Well G-561 and is located near Port Laudania, Miami, Florida. The dataset for Well G-561 contained ten years of information and included corrected water levels, well, rain, and tidal data. The goal of this report is to forecast the water levels of Well G-561. 
 
 ## DATA MANAGEMENT
 
-The original data included values for date, time, timezone, well measurement in feet, and the corrected well measurements for approximately 101,500 observations. The data was first modified to account for daylight savings time. The data included the well’s water levels in feet recorded over 15-minute intervals from October 5th, 2007 at 1:00 AM until June 4th, 2018 at 10:45 PM. However, the 15-minute intervals were not used consistently throughout the entire time frame, some measurements were recorded in hourly intervals. To compensate for this, we aggregated the data into hourly intervals. The dataset then contained 258 missing values, which were imputed. Data exploration showed evidence of high variance in well water levels between 2007 and 2014. In order to achieve better predictions, we subsetted the data for our model from June 2015 to June 2018. These were then split into a training and a holdout data set. We used the entire data set apart from the last seven days of well readings to first train our model. The last seven days of hourly well data were used to test the accuracy of our model’s predictions.
+The original data included values for date, time, timezone, well measurement in feet, and the corrected well measurements for approximately 101,500 observations. The data were standardized to account for daylight savings time. The data included the well water levels in feet recorded over 15-minute intervals from October 5th, 2007 at 1:00 AM until June 4th, 2018 at 10:45 PM. Due to inconsistencies in recorded time intervals, it was necessary to standardize these intervals by aggregating to hourly intervals using the mean well depth values within each hour. 
+Because the data contained 258 missing values, imputation was done using mean values. The data contained high variance in well water levels between 2007 and 2014. Due to this variance, the data were subset to include only observations after June 2015 in order to improve the quality of forecasted values. A validation dataset was created using the last seven days of values, during the second week of June 2018. This same process was applied to the tide and rain datasets. 
+
 
 ### METHODOLOGY
 
 ### Seasonality
 
-First, we identified if any seasonality was present in our data. While we originally found yearly seasonality to be present based on a Seasonal Trend Loess (STL) decomposition, it was on a very small scale. The addition of a seasonal component using a Fourier series did not significantly reduce the amount of variability captured by our error component, illustrated in the decomposition plot (Figure 1) below. We also checked for daily and weekly seasonality and found none to be present. Since accounting for the long-term seasonality did not add much value to modeling our series, we decided not to include a seasonality component in our analysis. 
-
+From the analysis, the tide variable was determined to be insignificant in predicting well water levels and was not included in the model. No seasonality was found at hourly, daily or weekly levels. Results from the standard Dickey-Fuller Test indicated one non-seasonal difference was needed to account for stochasticity of the mean well water levels. The analysis indicated that after a rain event, well levels were not affected for several hours. To account for this delay, a lag of 72 was taken on the rain variable.
+ 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
 
 Figure 1 - STL decomposition plot
@@ -28,7 +31,7 @@ Next, we conducted a standard Dickey-Fuller Test to check for stationarity in th
 
 ### Modeling Autocorrelation
 
-We checked our autocorrelation function plots and found both autoregressive (AR) and moving averages (MA) terms to be present, due to exponentially decreasing autocorrelation in both the ACF and PACF plots. Our analysis found that five AR and five MA terms were needed to account for this correlation structure. After fitting these terms, autocorrelation in our model was accounted for, and any remaining autocorrelation present was acceptable, as it was within the bounds of a 95% confidence interval. 
+We checked our autocorrelation function plots and found both autoregressive (AR) and moving averages (MA) terms to be present, due to exponentially decreasing autocorrelation in both the ACF and PACF plots. Our analysis found that eight AR and eight MA terms were needed to account for this correlation structure. After fitting these terms, autocorrelation in our model was accounted for, and any remaining autocorrelation present was acceptable, as it was within the bounds of a 95% confidence interval. 
 
 ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/ACF.png "ACF")
 *Figure 2 - ACF*
@@ -45,29 +48,28 @@ Finally, after accounting for seasonality, non-stationarity, and autocorrelation
 
 ### Final Model
 
-Our final model was an ARIMA(5, 1, 5) model with five AR and five MA terms, as well as one non-seasonal difference.
+The final result of the analysis was an ARIMA(8, 1, 8) model with 72 (hourly) lags of the rain variable. This indicates that 8 AR terms, 8 MA terms, and one non-seasonal difference were incorporated to achieve stationarity in the series and white noise in the error term. 
 
 ## RESULTS & ANALYSIS
 
-The second week of June (June 6, 2018 through June 12, 2018) was used as a holdout dataset to demonstrate the accuracy of our model. When tested on this holdout dataset, our model gave a mean absolute percent error (MAPE) of  0.068. Generally, lower error values indicate a model that fits the data more accurately. The full model diagnostic statistics can be found in Table 1 below.
+The ARIMA(8, 1, 8) model was used to forecast one week’s worth of well levels for the second week of June (June 6, 2018 through June 12, 2018). The model accurately forecasted ninety-five percent of the values in the validation dataset using the mean absolute percent error (MAPE) as the diagnostic statistic. See Table 1 for the diagnostic statistics results of the validation test.
 
-|    Model      |   MAE |  MAPE | sMAPE |    AIC   | 
-| ------------- | ------| ------|------ |----------|
-| ARIMA(5,1,5)  | 0.139 | 0.068 | 0.038 | -157729.9|
+|    Model              |   MAE |  MAPE | sMAPE |    AIC   | 
+| --------------------- | ------| ------|------ |----------|
+| 
+|ARIMA(8,1,8) with lags | 0.139 | 0.068 | 0.038 | -157729.9|
+|of 72 hours            |       |       |       |          |
 
 *Table 1 - Model Diagnostic Statistics*
 
-Overall, our model (shown in orange) effectively predicts the actual well-depth values (shown in blue) within a 95% confidence interval, indicated by the red lines in Figure 5 below. While our model over-predicts values for most of the values throughout June 7th and moves to underpredicting values from June 8th to June 12th, it generally hovers around the mean to where the actual values reside.
+Overall, our model (shown in orange) effectively predicts the actual well-depth values (shown in blue) within a 95% confidence interval, indicated by the red lines in Figure 5 below. 
 
-![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/Actual_vs_predict.png "White Noise")
+![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/Actual_vs_predict.png "Actual VS Prediction")
 *Figure 5 - Actual well water values (blue) v.s. forecasted well water values (orange) for the holdout data set*
 
 ## CONCLUSION
 
-Our ARIMA(5,1,5) model with a mean absolute percent error (MAPE) of 0.068 was used to forecast the results during the second 
-week of June 2018. The data showed several local maximums and minimums in well-depth (such as the rise in well depth around 
-June 8th in Figure 2 above) that our model could not account for. This could possibly be due to an increase in rainfall on 
-June 8th, leading to increased well water levels. In the future, incorporating related data such as rainfall or tide levels
-into our model could help model some of these nuances.
+Utilizing the Water Sustainability and Climate data, an ARIMA(8,1,8) model with up to 72 lags of rainfall was used to forecast the second week of June 2018 for Well G-561. The model accurately predicted ninety-five percent of the values in the forecast using the mean absolute percent error (MAPE) as the diagnostic statistic. The data showed a slight dip, followed by a peak and gradual decay in well-depth (see Figure 1 above) that the model successfully accounts for. Incorporating rainfall levels as a predictor accounts for an increase in rainfall on June 8th, leading to increased well water levels shortly after.
+
 
 
