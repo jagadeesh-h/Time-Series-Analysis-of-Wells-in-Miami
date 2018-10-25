@@ -22,9 +22,9 @@ Because the data contained 258 missing values, imputation was done using mean va
 From the analysis, the tide variable was determined to be insignificant in predicting well water levels and was not included in the model. No seasonality was found at hourly, daily or weekly levels. Results from the standard Dickey-Fuller Test indicated one non-seasonal difference was needed to account for stochasticity of the mean well water levels. The analysis indicated that after a rain event, well levels were not affected for several hours. To account for this delay, a lag of 72 was taken on the rain variable.
 
 <p align="center">
-![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
+  ![alt text](https://github.com/jagadeesh-h/Time-Series-Analysis-of-Wells-in-Miami/blob/master/img/stl.png "STL")
 
-##### *Figure 1 - STL decomposition plot*
+  ##### *Figure 1 - STL decomposition plot*
 </p>
 
 ### Stationarity in the Mean
