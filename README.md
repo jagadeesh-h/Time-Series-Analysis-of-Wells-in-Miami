@@ -56,7 +56,6 @@ The ARIMA(8, 1, 8) model was used to forecast one week’s worth of well levels 
 
 |    Model              |   MAE |  MAPE | sMAPE |    AIC   | 
 | --------------------- | ------| ------|------ |----------|
-| 
 |ARIMA(8,1,8) with lags | 0.139 | 0.068 | 0.038 | -157729.9|
 |of 72 hours            |       |       |       |          |
 
